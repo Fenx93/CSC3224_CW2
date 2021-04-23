@@ -72,8 +72,11 @@ public class GameplayController : MonoBehaviour
         ui.SetScore(score);
 
         spawnEnemies = false;
-        commonPlayerHP = startingCommonPlayerHP;
-        ui.commonPlayerHPText.text = "HP x" + commonPlayerHP;
+        if (!playersInvulnerable)
+        {
+            commonPlayerHP = startingCommonPlayerHP;
+            ui.commonPlayerHPText.text = "HP x" + commonPlayerHP;
+        }
 
         var enems = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enems)
@@ -83,7 +86,6 @@ public class GameplayController : MonoBehaviour
         if (playIntroMovie)
         {
             playingIntro = true;
-            playersInvulnerable = true;
             canPlayersMove = false;
             ui.SetCinematicBars(true);
             //spawn players on bottom, move them to the starting positions
@@ -114,7 +116,6 @@ public class GameplayController : MonoBehaviour
         playerOne.transform.position = playerSpawnPoints[0];
         playerTwo.transform.position = playerSpawnPoints[1];
         canPlayersMove = true;
-        playersInvulnerable = false;
     }
 
     private IEnumerator TransferObjectToPosition(GameObject gameObject, Vector3 targetPosition)
@@ -146,7 +147,6 @@ public class GameplayController : MonoBehaviour
         ui.SetWave(1);
         canPlayersMove = true;
         playingIntro = false;
-        playersInvulnerable = false;
         yield return null;
     }
     #endregion
