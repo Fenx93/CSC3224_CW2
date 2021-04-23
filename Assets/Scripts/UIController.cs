@@ -99,7 +99,7 @@ public class UIController : MonoBehaviour
     {
         gameController.playersInvulnerable = invulnerable;
         commonPlayerHPText.text = invulnerable ? 
-            "HP ∞" : "HP x" + gameController.GetCommonPlayerHp();
+            "HP ∞" : "HP x" + gameController.CommonPlayerHp;
     }
 
     #region StartGameMenu

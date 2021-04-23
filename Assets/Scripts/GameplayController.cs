@@ -44,6 +44,9 @@ public class GameplayController : MonoBehaviour
     private Vector3 savedVelocity, savedVelocity1;
     private float savedAngularVelocity, savedAngularVelocity1;
     private GameObject introEnemy;
+    private int currentWave = 0;
+
+    public int CommonPlayerHp => commonPlayerHP;
 
     private void Awake()
     {
@@ -182,11 +185,6 @@ public class GameplayController : MonoBehaviour
         canPlayersMove = true;
     }
 
-    public int GetCommonPlayerHp()
-    {
-        return commonPlayerHP;
-    }
-
     public void SetEnemySpawn(bool spawn)
     {
         StartCoroutine(WaitAndStartSpawningEnemies(spawn));
@@ -200,8 +198,13 @@ public class GameplayController : MonoBehaviour
 
     public void AddScore(int enemyScore)
     {
-        score += enemyScore;
+        score += (enemyScore);
         ui.SetScore(score);
+        if (score / 5000 > currentWave)
+        {
+            currentWave++;
+            ui.SetWave(currentWave + 1);
+        }
     }
 
     private void SpawnRandomEnemy()
