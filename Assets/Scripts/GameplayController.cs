@@ -99,7 +99,7 @@ public class GameplayController : MonoBehaviour
             playerTwo.transform.position = playerSpawnPoints[1];
             SetEnemySpawn(true);
         }
-        OnResumeGame();
+        ResumeGame();
         isPaused = false;
     }
 
@@ -165,7 +165,7 @@ public class GameplayController : MonoBehaviour
         canPlayersMove = false;
     }
 
-    public void OnResumeGame()
+    public void ResumeGame()
     {
         isPaused = false;
 

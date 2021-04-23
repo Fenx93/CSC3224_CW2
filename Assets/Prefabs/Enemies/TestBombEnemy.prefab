@@ -45,6 +45,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -103,7 +104,7 @@ MonoBehaviour:
   attackCooldown: 1
   score: 250
   attackRange: 3
-  attackTime: 1
+  attackTime: 1.25
   aoePrefab: {fileID: 6904015548558466281, guid: 868e85a5c4c4f1f4989a495fe62e02a0, type: 3}
   aoeSize: 5
   aoeGrowTime: 0.5

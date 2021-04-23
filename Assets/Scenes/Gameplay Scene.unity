@@ -496,7 +496,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: db80174ff12165f46afb2320840928e6, type: 3}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
@@ -1052,10 +1052,10 @@ RectTransform:
   m_Children:
   - {fileID: 1494596690}
   m_Father: {fileID: 585056655}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4, y: 0.35}
-  m_AnchorMax: {x: 0.6, y: 0.45}
+  m_AnchorMin: {x: 0.4, y: 0.2}
+  m_AnchorMax: {x: 0.6, y: 0.3}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1704,7 +1704,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Intro skipping will be added later
+  m_Text: To skip intro, press "Space"
 --- !u!222 &420520451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2240,9 +2240,9 @@ RectTransform:
   m_Children:
   - {fileID: 543660773}
   - {fileID: 1534330922}
+  - {fileID: 1390713965}
   - {fileID: 1908333609}
   - {fileID: 151603318}
-  - {fileID: 1390713965}
   - {fileID: 1848883764}
   - {fileID: 1909037136}
   - {fileID: 711803967}
@@ -3902,7 +3902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry
+  m_Text: Restart
 --- !u!222 &962696042
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5502,8 +5502,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1652452069}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: Continue
-        m_Mode: 1
+        m_MethodName: PauseGame
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5594,10 +5594,10 @@ RectTransform:
   m_Children:
   - {fileID: 78307630}
   m_Father: {fileID: 585056655}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4, y: 0.2}
-  m_AnchorMax: {x: 0.6, y: 0.3}
+  m_AnchorMin: {x: 0.4, y: 0.55}
+  m_AnchorMax: {x: 0.6, y: 0.65}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6405,7 +6405,7 @@ GameObject:
   - component: {fileID: 1459260183}
   - component: {fileID: 1459260182}
   m_Layer: 5
-  m_Name: Retry Button
+  m_Name: Restart Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6699,7 +6699,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: db80174ff12165f46afb2320840928e6, type: 3}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
@@ -7235,7 +7235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 776064970}
   playerTwo: {fileID: 1248987120}
-  startingCommonPlayerHP: 1
+  startingCommonPlayerHP: 10
   line: {fileID: 77611611}
   playerinvulnerabilityTime: 3
   enemies:
@@ -7834,7 +7834,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: db80174ff12165f46afb2320840928e6, type: 3}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
@@ -8363,10 +8363,10 @@ RectTransform:
   m_Children:
   - {fileID: 1814552991}
   m_Father: {fileID: 585056655}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4, y: 0.5}
-  m_AnchorMax: {x: 0.6, y: 0.6}
+  m_AnchorMin: {x: 0.4, y: 0.375}
+  m_AnchorMax: {x: 0.6, y: 0.475}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

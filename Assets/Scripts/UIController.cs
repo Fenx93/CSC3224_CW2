@@ -17,8 +17,6 @@ public class UIController : MonoBehaviour
     private GameplayController gameController;
     private AudioController audioController;
 
-    //private bool isInStartMenu;
-
     private void Awake()
     {
         gameController = GetComponent<GameplayController>();
@@ -33,9 +31,16 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey("escape"))
+        if (Input.GetKeyUp("escape"))
         {
-            OpenMenu();
+            if (startScreen.activeSelf)
+            {
+                OpenStartOptionsMenu(!menuScreen.activeSelf);
+            }
+            else if (!defeatScreen.activeSelf)
+            {
+                PauseGame(!menuScreen.activeSelf);
+            }
         }
     }
 
@@ -113,11 +118,10 @@ public class UIController : MonoBehaviour
 
     public void OpenStartOptionsMenu(bool open)
     {
-        startScreen.SetActive(!open);
         menuScreen.SetActive(open);
         goBackButton.SetActive(open);
-        continueButton.SetActive(!open);
         retryButton.SetActive(!open);
+        continueButton.SetActive(!open);
     }
 
     public void StartGame()
@@ -127,18 +131,17 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
-    private void OpenMenu()
+    public void PauseGame(bool isPaused)
     {
-        menuScreen.SetActive(true);
-        gameController.PauseGame();
-        continueButton.SetActive(true);
-    }
-
-    public void Continue()
-    {
-        menuScreen.SetActive(false);
-        continueButton.SetActive(false);
-        gameController.OnResumeGame();
+        menuScreen.SetActive(isPaused);
+        if (isPaused)
+        {
+            gameController.PauseGame();
+        }
+        else
+        {
+            gameController.ResumeGame();
+        }
     }
 
     public void ExitGame()
