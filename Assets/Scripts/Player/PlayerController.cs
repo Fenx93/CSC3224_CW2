@@ -5,10 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private int playerId;
+    [SerializeField] private float speed;
+    [SerializeField] private int playerId;
 
     private Vector2 movement;
     private GameplayController gameController;
@@ -25,7 +23,6 @@ public class PlayerController : MonoBehaviour
         baseColor = spriteRenderer.material.color;
         gameController = FindObjectOfType<GameplayController>();
         audioController = FindObjectOfType<AudioController>();
-
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.

@@ -6,17 +6,13 @@ public class UIController : MonoBehaviour
 {
     public Text commonPlayerHPText;
 
-    [SerializeField]
-    private Text scoreText, deathScoreText, waveText;
+    [SerializeField] private Text scoreText, deathScoreText, waveText;
 
-    [SerializeField]
-    private GameObject startScreen, defeatScreen, menuScreen, helpScreen;
+    [SerializeField] private GameObject startScreen, defeatScreen, menuScreen, helpScreen;
     
-    [SerializeField]
-    private GameObject topBar, bottomBar;
+    [SerializeField] private GameObject topBar, bottomBar;
 
-    [SerializeField]
-    private GameObject goBackButton, continueButton;
+    [SerializeField] private GameObject goBackButton, continueButton, retryButton;
 
     private GameplayController gameController;
     private AudioController audioController;
@@ -29,8 +25,6 @@ public class UIController : MonoBehaviour
         audioController = GetComponent<AudioController>();
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         menuScreen.SetActive(false);
@@ -80,7 +74,7 @@ public class UIController : MonoBehaviour
     public void Defeat()
     {
         scoreText.enabled = false;
-        gameController.isPaused = true;
+        gameController.PauseGame();
         deathScoreText.text = "Your Score is: "+gameController.score;
         commonPlayerHPText.enabled = false;
         defeatScreen.SetActive(true);
@@ -91,6 +85,8 @@ public class UIController : MonoBehaviour
         scoreText.enabled = true;
         commonPlayerHPText.enabled = true;
         defeatScreen.SetActive(false);
+        menuScreen.SetActive(false);
+        gameController.playIntroMovie = false;
         gameController.StartGame();
     }
 
@@ -109,25 +105,19 @@ public class UIController : MonoBehaviour
         menuScreen.SetActive(false);
         defeatScreen.SetActive(false);
     }
-    public void CloseHelpMenu()
+
+    public void OpenHelpMenu(bool open)
     {
-        helpScreen.SetActive(false);
+        helpScreen.SetActive(open);
     }
-    public void OpenHelpMenu()
+
+    public void OpenStartOptionsMenu(bool open)
     {
-        helpScreen.SetActive(true);
-    }
-    public void OpenStartOptionsMenu()
-    {
-        startScreen.SetActive(false);
-        menuScreen.SetActive(true);
-        goBackButton.SetActive(true);
-    }
-    public void CloseStartOptionsMenu()
-    {
-        startScreen.SetActive(true);
-        menuScreen.SetActive(false);
-        goBackButton.SetActive(false);
+        startScreen.SetActive(!open);
+        menuScreen.SetActive(open);
+        goBackButton.SetActive(open);
+        continueButton.SetActive(!open);
+        retryButton.SetActive(!open);
     }
 
     public void StartGame()
@@ -140,7 +130,7 @@ public class UIController : MonoBehaviour
     private void OpenMenu()
     {
         menuScreen.SetActive(true);
-        gameController.isPaused = true;
+        gameController.PauseGame();
         continueButton.SetActive(true);
     }
 
@@ -148,9 +138,8 @@ public class UIController : MonoBehaviour
     {
         menuScreen.SetActive(false);
         continueButton.SetActive(false);
-        gameController.isPaused = false;
+        gameController.OnResumeGame();
     }
-
 
     public void ExitGame()
     {
