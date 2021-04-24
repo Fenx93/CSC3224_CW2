@@ -103,11 +103,11 @@ MonoBehaviour:
   speed: 10
   attackCooldown: 1
   score: 250
-  attackRange: 3
+  attackRange: 4
   attackTime: 1.25
   aoePrefab: {fileID: 6904015548558466281, guid: 868e85a5c4c4f1f4989a495fe62e02a0, type: 3}
   aoeSize: 5
-  aoeGrowTime: 0.5
+  aoeGrowTime: 1.25
   shootingCooldown: 1
 --- !u!50 &6937236839301987902
 Rigidbody2D:

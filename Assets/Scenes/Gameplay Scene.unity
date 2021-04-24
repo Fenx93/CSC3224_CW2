@@ -7235,7 +7235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 776064970}
   playerTwo: {fileID: 1248987120}
-  startingCommonPlayerHP: 10
+  startingCommonPlayerHP: 6
   line: {fileID: 77611611}
   playerinvulnerabilityTime: 3
   enemies:
@@ -7255,8 +7255,8 @@ MonoBehaviour:
   - {x: -20, y: 0, z: 0}
   spawnEnemies: 1
   spawnEnemyTimer: 5
-  arenaHeight: 0
-  arenaWidth: 0
+  arenaHeight: 9
+  arenaWidth: 18
   playerLineDistance: 20
   playerSpawnPoints:
   - {x: -2.85, y: 3.3, z: 0}
