@@ -4,19 +4,13 @@ using UnityEngine;
 
 public abstract class ShootingEnemy : Enemy
 {
-    [SerializeField]
-    protected float attackRange;
-    [SerializeField]
-    protected float attackTime = 1.0f;
-    [SerializeField]
-    protected GameObject aoePrefab;
-    [SerializeField]
-    protected float aoeSize = 3f;
-    [SerializeField]
-    protected float aoeGrowTime = 1f;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackTime = 1.0f;
+    [SerializeField] protected GameObject aoePrefab;
+    [SerializeField] protected float aoeSize = 3f;
+    [SerializeField] protected float aoeGrowTime = 1f;
 
-    [SerializeField]
-    protected float shootingCooldown = 1f;
+    [SerializeField] protected float shootingCooldown = 1f;
 
     protected bool isShooting = false;
 
@@ -31,16 +25,17 @@ public abstract class ShootingEnemy : Enemy
                 //keep finding closest target
                 target = FindClosestTarget();
                 var distance = Vector2.Distance(target.transform.position, transform.position);
-                //if out of range - get closer
-                if (distance > attackRange && !IsInArena())
+
+                //if in the range and in the arena - shoot
+                if (distance <= attackRange && IsInArena())
+                {
+                    Shoot(target.transform.position);
+                }
+                //if out of range or outside the arena - get closer
+                else
                 {
                     float step = speed * Time.deltaTime; // calculate distance to move
                     transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
-                }
-                //if in the range - shoot
-                else
-                {
-                    Shoot(target.transform.position);
                 }
             }
         }
@@ -52,6 +47,7 @@ public abstract class ShootingEnemy : Enemy
         return Mathf.Abs(pos.x) < gameController.arenaWidth 
             && Mathf.Abs(pos.y) < gameController.arenaHeight;
     }
+
     protected abstract void Shoot(Vector3 targetPosition);
 
     protected abstract void PostShootAction();
