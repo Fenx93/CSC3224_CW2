@@ -5766,7 +5766,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: db80174ff12165f46afb2320840928e6, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -7254,6 +7254,7 @@ MonoBehaviour:
   - {x: -20, y: -11.5, z: 0}
   - {x: -20, y: 0, z: 0}
   spawnEnemies: 1
+  scoreMultiplier: 1
   spawnEnemyTimer: 5
   arenaHeight: 9
   arenaWidth: 18

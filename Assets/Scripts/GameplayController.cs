@@ -22,6 +22,7 @@ public class GameplayController : MonoBehaviour
 
     // Make this available in inspector only as a testing tool
     [SerializeField] private bool spawnEnemies = true;
+    [SerializeField] private int scoreMultiplier = 1;
 
     [SerializeField] private float spawnEnemyTimer = 5;
     
@@ -45,6 +46,7 @@ public class GameplayController : MonoBehaviour
     private float savedAngularVelocity, savedAngularVelocity1;
     private GameObject introEnemy;
     private int currentWave = 0;
+    private List<Coroutine> enemySpawners = new List<Coroutine>();
 
     public int CommonPlayerHp => commonPlayerHP;
 
@@ -69,7 +71,10 @@ public class GameplayController : MonoBehaviour
     {
         audioController.PlayMusic();
         score = 0;
+        currentWave = 0;
         ui.SetScore(score);
+        StopAllCoroutines();
+        //ResetEnemySpawners();
 
         spawnEnemies = false;
         if (!playersInvulnerable)
@@ -99,6 +104,7 @@ public class GameplayController : MonoBehaviour
         }
         else
         {
+            ui.SetWave(1);
             canPlayersMove = true;
             playerOne.transform.position = playerSpawnPoints[0];
             playerTwo.transform.position = playerSpawnPoints[1];
@@ -187,7 +193,16 @@ public class GameplayController : MonoBehaviour
 
     public void SetEnemySpawn(bool spawn)
     {
-        StartCoroutine(WaitAndStartSpawningEnemies(spawn));
+        enemySpawners.Add(StartCoroutine(WaitAndStartSpawningEnemies(spawn)));
+    }
+
+    public void ResetEnemySpawners()
+    {
+        foreach (var coroutine in enemySpawners)
+        {
+            StopCoroutine(coroutine);
+        }
+        enemySpawners.Clear();
     }
 
     private IEnumerator WaitAndStartSpawningEnemies(bool spawn)
@@ -198,7 +213,7 @@ public class GameplayController : MonoBehaviour
 
     public void AddScore(int enemyScore)
     {
-        score += (enemyScore);
+        score += (enemyScore * scoreMultiplier);
         ui.SetScore(score);
         if (score / 5000 > currentWave)
         {
